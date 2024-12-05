@@ -1,13 +1,9 @@
-*.tar
-*.tar.*
-*.jar
-*.exe
-*.msi
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
-
-pkg/
-src/
+# n7xilinxhelper generated files
+*/isim/
+*/batch.tcl
+*/bin
+*/*.log
+*/ise.prj
+*/isim.wdb
+*/fuse*
+*/output.vcd
