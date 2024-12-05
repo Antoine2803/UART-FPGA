@@ -6,3 +6,4 @@ This is a little school project that consist on sending keyboard inputs to a **F
 ## Tools and language used for the project
 - VHDL
 - Xilinx software
+
