@@ -13,15 +13,17 @@ end RxUnit;
 
 architecture RxUnit_arch of RxUnit is
 	type tcompteur16 is (idle, waiting, working);
-	type tcontroleReception is (idle, working, ending);
+	type tcontroleReception is (idlec, workingc, endingc);
 	
 	signal etat16 : tcompteur16 := idle;
 	signal tmpRxD : std_logic;
 	signal tmpClk : std_logic;
 	signal trameEnd : std_logic;
 	
-	signal tcontrole : tcontroleReception := idle;
+	signal etatc : tcontroleReception := idlec;
 	signal recep : std_logic;
+	
+	signal debug : std_logic := '0';
 begin
 	-- Element compteur 16
 	process(enable, reset)
@@ -34,8 +36,7 @@ begin
 			Ferr <= '0';
 			OErr <= '0';
 			DRdy <= '0';
-			data <= (others => '0');
-			trameEnd <= '1';
+			data <= (others => '0');	
 			recep <= '0';
 			
 		elsif (rising_edge(enable)) then
@@ -58,7 +59,7 @@ begin
 					
 					-- fin de la reception de la trame 
 					if (trameEnd = '1') then 
-						etat <= idle;
+						etat16 <= idle;
 						recep <= '0';
 					end if;
 					
@@ -69,7 +70,7 @@ begin
 
 					-- fin de la reception de la trame 
 					if (trameEnd = '1') then 
-						etat <= idle;
+						etat16 <= idle;
 						recep <= '0';
 					end if;					
 			end case;
@@ -84,19 +85,26 @@ begin
 		variable stop : std_logic;			 -- bit de stop reçu
 	begin
 		if (reset = '0') then
-			tcontrole <= idle;
+			etatc <= idlec;
+			trameEnd <= '0';
+			tmpRxD <= '1';
+			tmpClk <= '0';
+			Ferr <= '0';
+			OErr <= '0';
+			DRdy <= '0';
+			data <= (others => '0');
 			trameEnd <= '0';
 			
 		elsif (rising_edge(clk)) then
-			case tcontrole is
-				when idle =>
+			case etatc is
+				when idlec =>
 					if (recep = '1') then
 						cptBit := 12;
 						parite := '0';
-						etat <= working;
+						etatc <= workingc;
 					end if;
 				
-				when working =>
+				when workingc =>
 					if (tmpClk = '1') then
 						if ((3 < cptBit) and (cptBit < 11)) then
 							data(cptBit - 3) <= tmpRxD;
@@ -109,16 +117,24 @@ begin
 						cptBit := cptBit - 1;
 						
 						if (cptBit = 0) then 
+							debug <= '1';
 							if ((parite /= parite_calc) or (stop = '0')) then
 								FErr <= '1';
 							else
 								DRdy <= '1';
 							end if;
-							etat <= ending;
+							etatc <= endingc;
 						end if;
 					end if;
 					
-				when ending =>
+				when endingc =>
+					FErr <= '0';
+					DRdy <= '0';
+					if (read = '0') then
+						OErr <= '1';
+					end if;
+					trameEnd <= '1';
+					etatc <= idlec;
 					
 			end case;
 		end if;
