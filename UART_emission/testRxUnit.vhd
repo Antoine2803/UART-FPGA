@@ -105,27 +105,30 @@ BEGIN
 			wait for 20 ns;
 			
 			rxd <= '0';
-      wait for clk_period*16;
+      wait for clk_period*18;
 			rxd <= '1';
-      wait for clk_period*16;
+      wait for clk_period*18;
 			rxd <= '0';
-      wait for clk_period*16;
+      wait for clk_period*18;
 			rxd <= '1';
-      wait for clk_period*16;
+      wait for clk_period*18;
 			rxd <= '0';
-      wait for clk_period*16;
+      wait for clk_period*18;
 			rxd <= '1';
-      wait for clk_period*16;
+      wait for clk_period*18;
 			rxd <= '0';
-      wait for clk_period*16;
+      wait for clk_period*18;
 			rxd <= '1';
-      wait for clk_period*16;
+      wait for clk_period*18;
 			rxd <= '0';
-      wait for clk_period*16;
+      wait for clk_period*18;
 			rxd <= '0';
-      wait for clk_period*16;
+      wait for clk_period*18;
 			rxd <= '1';
-      wait for clk_period*16;
+			wait for 264 ns;
+			read <= '1';
+			wait for clk_period*2;
+			read <= '0';
 
 
       wait;

@@ -33,10 +33,6 @@ begin
 			etat16 <= idle;
 			tmpRxD <= '1';
 			tmpClk <= '0';
-			Ferr <= '0';
-			OErr <= '0';
-			DRdy <= '0';
-			data <= (others => '0');	
 			recep <= '0';
 			
 		elsif (rising_edge(enable)) then
@@ -46,6 +42,7 @@ begin
 						cptClk := 8;
 						recep <= '1';
 						etat16 <= waiting;
+						tmpClk <= '0';
 					end if;
 					
 				when waiting =>
@@ -87,26 +84,25 @@ begin
 		if (reset = '0') then
 			etatc <= idlec;
 			trameEnd <= '0';
-			tmpRxD <= '1';
-			tmpClk <= '0';
 			Ferr <= '0';
 			OErr <= '0';
 			DRdy <= '0';
-			data <= (others => '0');
-			trameEnd <= '0';
+			data <= (others => '0');	
 			
 		elsif (rising_edge(clk)) then
 			case etatc is
 				when idlec =>
+					OErr <= '0';
 					if (recep = '1') then
-						cptBit := 12;
+						cptBit := 11;
 						parite := '0';
+						parite_calc := '0';
 						etatc <= workingc;
 					end if;
 				
 				when workingc =>
 					if (tmpClk = '1') then
-						if ((3 < cptBit) and (cptBit < 11)) then
+						if ((3 <= cptBit) and (cptBit < 11)) then
 							data(cptBit - 3) <= tmpRxD;
 							parite_calc := parite_calc xor tmpRxD;
 						elsif (cptBit = 2) then 
@@ -117,7 +113,7 @@ begin
 						cptBit := cptBit - 1;
 						
 						if (cptBit = 0) then 
-							debug <= '1';
+							debug <= stop;
 							if ((parite /= parite_calc) or (stop = '0')) then
 								FErr <= '1';
 							else
