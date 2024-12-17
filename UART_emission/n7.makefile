@@ -1,5 +1,6 @@
 
 SRC = ../clkUnit/clkUnit.vhd             \
+      ../TxUnit/TxUnit.vhd               \
       ctrlUnit.vhd \
       UART.vhd \
       diviseurClk.vhd \

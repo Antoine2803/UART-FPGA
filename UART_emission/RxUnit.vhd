@@ -23,7 +23,6 @@ architecture RxUnit_arch of RxUnit is
 	signal etatc : tcontroleReception := idlec;
 	signal recep : std_logic;
 	
-	signal debug : std_logic := '0';
 begin
 	-- Element compteur 16
 	process(enable, reset)
@@ -113,7 +112,6 @@ begin
 						cptBit := cptBit - 1;
 						
 						if (cptBit = 0) then 
-							debug <= stop;
 							if ((parite /= parite_calc) or (stop = '0')) then
 								FErr <= '1';
 							else
