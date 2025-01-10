@@ -1,41 +1,41 @@
-library IEEE;
-use IEEE.std_logic_1164.all;
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
 
-entity diviseurClk is
+ENTITY diviseurClk IS
   -- facteur : ratio entre la fréquence de l'horloge origine et celle
   --           de l'horloge générée
   --  ex : 100 MHz -> 1Hz : 100 000 000
   --  ex : 100 MHz -> 1kHz : 100 000
-  generic(facteur : natural);
-  port (
-    clk, reset : in  std_logic;
-    nclk       : out std_logic);
-end diviseurClk;
+  GENERIC (facteur : NATURAL);
+  PORT (
+    clk, reset : IN STD_LOGIC;
+    nclk       : OUT STD_LOGIC);
+END diviseurClk;
 
-architecture arch_divClk of diviseurClk is
+ARCHITECTURE arch_divClk OF diviseurClk IS
 
-  signal top : std_logic := '0';
-  
-begin  
+  SIGNAL top : STD_LOGIC := '0';
 
-  div : process (clk, reset)
-    variable cpt : integer range 0 to facteur-1 := 0;
-  begin 
-    if reset = '0' then
+BEGIN
+
+  div : PROCESS (clk, reset)
+    VARIABLE cpt : INTEGER RANGE 0 TO facteur - 1 := 0;
+  BEGIN
+    IF reset = '0' THEN
       nclk <= '0';
       cpt := 0;
-    elsif rising_edge(clk) then
-      if(cpt = facteur - 1) then
+    ELSIF rising_edge(clk) THEN
+      IF (cpt = facteur - 1) THEN
         cpt := 0;
-      else
+      ELSE
         cpt := cpt + 1;
-      end if;
-      if cpt = 0 then
+      END IF;
+      IF cpt = 0 THEN
         nclk <= '1';
-      else
+      ELSE
         nclk <= '0';
-      end if;
-    end if;
-  end process;
+      END IF;
+    END IF;
+  END PROCESS;
 
-end arch_divClk;
+END arch_divClk;

@@ -15,6 +15,8 @@ architecture RxUnit_arch of RxUnit is
 	type tcompteur16 is (idle, waiting, working);
 	type tcontroleReception is (idlec, workingc, endingc);
 	
+	signal data_reg : std_logic_vector(7 downto 0);
+	
 	signal etat16 : tcompteur16 := idle;
 	signal etatc : tcontroleReception := idlec;
 	signal tmpRxD : std_logic;
@@ -38,6 +40,7 @@ begin
 			OErr <= '0';
 			DRdy <= '0';
 			data <= (others => '0');
+			data_reg <= (others => '0');
 			
 		elsif  rising_edge(clk) then
 			if (enable = '1') then
@@ -80,23 +83,24 @@ begin
 				when workingc =>
 					if (tmpClk = '1') then
 						if (3 <= cptBit) then
-							data(cptBit - 3) <= tmpRxD;
+							data_reg(cptBit - 3) <= tmpRxD;
 							parite_calc := parite_calc xor tmpRxD;
 						elsif (cptBit = 2) then 
 							parite := tmpRxD;
 						elsif (cptBit = 1) then
 							stop := tmpRxD;
 						end if;
-						cptBit := cptBit - 1;
 						
 						if (cptBit = 0) then 
 							if ((parite /= parite_calc) or (stop = '0')) then
 								FErr <= '1';
 							else
 								DRdy <= '1';
+								data <= data_reg;
 							end if;
 							etatc <= endingc;
 						end if;
+						cptBit := cptBit - 1;
 					end if;
 					
 				when endingc =>

@@ -1,59 +1,60 @@
-library IEEE;
-use IEEE.std_logic_1164.all;
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
 
-entity ctrlUnit is
-  
-  port (
-    clk, reset       : in  std_logic;
-    rd, cs           : in  std_logic;
-    DRdy, FErr, OErr : in  std_logic;
-    BufE, RegE       : in  std_logic;
-    IntR             : out std_logic;
-    IntT             : out std_logic;
-    ctrlReg          : out std_logic_vector(7 downto 0));
+ENTITY ctrlUnit IS
 
-end ctrlUnit;
+  PORT (
+    clk, reset       : IN STD_LOGIC;
+    rd, cs           : IN STD_LOGIC;
+    DRdy, FErr, OErr : IN STD_LOGIC;
+    BufE, RegE       : IN STD_LOGIC;
+    IntR             : OUT STD_LOGIC;
+    IntT             : OUT STD_LOGIC;
+    ctrlReg          : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
 
-architecture ctrlUnit_arch of ctrlUnit is
+END ctrlUnit;
 
-  signal registreC : std_logic_vector(7 downto 0);
+ARCHITECTURE ctrlUnit_arch OF ctrlUnit IS
 
-begin 
+  SIGNAL registreC : STD_LOGIC_VECTOR(7 DOWNTO 0);
 
-  ctrlReg <= registreC when (rd = '0' and cs ='0') else "11110000";
+BEGIN
 
-  ctrlProcess: process (clk, reset)
+  ctrlReg <= registreC WHEN (rd = '0' AND cs = '0') ELSE
+    "11110000";
 
-  begin
-    if reset = '0' then
+  ctrlProcess : PROCESS (clk, reset)
 
-      IntR <= '1';
-      IntT <= '1';
+  BEGIN
+    IF reset = '0' THEN
+
+      IntR      <= '1';
+      IntT      <= '1';
       registreC <= "11110000";
 
-    elsif clk'event and clk = '1' then
+    ELSIF clk'event AND clk = '1' THEN
 
-      if DRdy = '0' then
-        IntR <= '1';
+      IF DRdy = '0' THEN
+        IntR         <= '1';
         registreC(2) <= '0';
-      elsif DRdy = '1' and FErr = '0' and OErr = '0'  then
-        IntR <= '0';
+      ELSIF DRdy = '1' AND FErr = '0' AND OErr = '0' THEN
+        IntR         <= '0';
         registreC(2) <= '1';
-      end if;
-       
-      if (BufE = '1' or RegE = '1') then
-        IntT <= '0';
+      END IF;
+
+      IF (BufE = '1' OR RegE = '1') THEN
+        IntT         <= '0';
         registreC(3) <= '1';
-      else
-        IntT <= '1';
+      ELSE
+        IntT         <= '1';
         registreC(3) <= '0';
-      end if;
-       
+      END IF;
+
       registreC(1) <= FErr;
       registreC(0) <= OErr;
 
-    end if;
+    END IF;
 
-  end process ctrlProcess;
+  END PROCESS ctrlProcess;
 
-end ctrlUnit_arch;
+END ctrlUnit_arch;

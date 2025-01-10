@@ -1,0 +1,784 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "ise.prj"
+
+---- Target Parameters
+Output File Name                   : "UART_FPGA_N4"
+Target Device                      : xc7a100t-csg324-1
+
+---- Source Options
+Top Module Name                    : UART_FPGA_N4
+
+=========================================================================
+
+WARNING:Xst:29 - Optimization Effort not specified
+The following parameters have been added:
+Optimization Goal                  : SPEED
+
+=========================================================================
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/clkUnit/clkUnit.vhd" into library work
+Parsing entity <clkUnit>.
+Parsing architecture <behavorial> of entity <clkunit>.
+Parsing VHDL file "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/TxUnit/TxUnit.vhd" into library work
+Parsing entity <TxUnit>.
+Parsing architecture <behavorial> of entity <txunit>.
+Parsing VHDL file "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/ctrlUnit.vhd" into library work
+Parsing entity <ctrlUnit>.
+Parsing architecture <ctrlUnit_arch> of entity <ctrlunit>.
+Parsing VHDL file "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/UART.vhd" into library work
+Parsing entity <UARTunit>.
+Parsing architecture <UARTunit_arch> of entity <uartunit>.
+Parsing VHDL file "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/diviseurClk.vhd" into library work
+Parsing entity <diviseurClk>.
+Parsing architecture <arch_divClk> of entity <diviseurclk>.
+Parsing VHDL file "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/RxUnit.vhd" into library work
+Parsing entity <RxUnit>.
+Parsing architecture <RxUnit_arch> of entity <rxunit>.
+Parsing VHDL file "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/echoUnit.vhd" into library work
+Parsing entity <echoUnit>.
+Parsing architecture <echoUnit_arch> of entity <echounit>.
+Parsing VHDL file "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/UART_FPGA_N4.vhd" into library work
+Parsing entity <UART_FPGA_N4>.
+Parsing architecture <synthesis> of entity <uart_fpga_n4>.
+Parsing VHDL file "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/testRxUnit.vhd" into library work
+Parsing entity <testRXUnit>.
+Parsing architecture <behavior> of entity <testrxunit>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <UART_FPGA_N4> (architecture <synthesis>) from library <work>.
+
+Elaborating entity <diviseurClk> (architecture <arch_divClk>) with generics from library <work>.
+
+Elaborating entity <echoUnit> (architecture <echoUnit_arch>) from library <work>.
+
+Elaborating entity <UARTunit> (architecture <UARTunit_arch>) from library <work>.
+
+Elaborating entity <clkUnit> (architecture <behavorial>) from library <work>.
+
+Elaborating entity <RxUnit> (architecture <RxUnit_arch>) from library <work>.
+
+Elaborating entity <TxUnit> (architecture <behavorial>) from library <work>.
+
+Elaborating entity <ctrlUnit> (architecture <ctrlUnit_arch>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <UART_FPGA_N4>.
+    Related source file is "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/UART_FPGA_N4.vhd".
+WARNING:Xst:647 - Input <swt> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <btnU> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <btnL> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <btnR> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <btnD> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	no macro.
+Unit <UART_FPGA_N4> synthesized.
+
+Synthesizing Unit <diviseurClk>.
+    Related source file is "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/diviseurClk.vhd".
+        facteur = 645
+    Found 10-bit register for signal <div.cpt>.
+    Found 1-bit register for signal <nclk>.
+    Found 10-bit adder for signal <div.cpt[9]_GND_6_o_add_1_OUT> created at line 31.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  11 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <diviseurClk> synthesized.
+
+Synthesizing Unit <echoUnit>.
+    Related source file is "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/echoUnit.vhd".
+WARNING:Xst:647 - Input <IntT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 3-bit register for signal <etat>.
+    Found 1-bit register for signal <cs>.
+    Found 1-bit register for signal <rd>.
+    Found 1-bit register for signal <wr>.
+    Found 8-bit register for signal <data_out>.
+    Found 2-bit register for signal <addr>.
+    Found 8-bit register for signal <donnee>.
+    Found finite state machine <FSM_0> for signal <etat>.
+    -----------------------------------------------------------------------
+    | States             | 6                                              |
+    | Transitions        | 9                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 5                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset (negative)                               |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | test_emission                                  |
+    | Power Up State     | attente                                        |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred  21 D-type flip-flop(s).
+	inferred  11 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <echoUnit> synthesized.
+
+Synthesizing Unit <UARTunit>.
+    Related source file is "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/UART.vhd".
+    Summary:
+	inferred   2 Multiplexer(s).
+Unit <UARTunit> synthesized.
+
+Synthesizing Unit <clkUnit>.
+    Related source file is "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/clkUnit/clkUnit.vhd".
+    Found 31-bit register for signal <cptTX>.
+    Found 1-bit register for signal <enableTX>.
+    Found 31-bit adder for signal <cptTX[30]_GND_9_o_add_1_OUT> created at line 33.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  32 D-type flip-flop(s).
+	inferred   2 Multiplexer(s).
+Unit <clkUnit> synthesized.
+
+Synthesizing Unit <RxUnit>.
+    Related source file is "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/RxUnit.vhd".
+    Found 1-bit register for signal <tmpRxD>.
+    Found 2-bit register for signal <etatc>.
+    Found 2-bit register for signal <etat16>.
+    Found 8-bit register for signal <data>.
+    Found 8-bit register for signal <data_reg>.
+    Found 1-bit register for signal <tmpClk>.
+    Found 1-bit register for signal <Ferr>.
+    Found 1-bit register for signal <OErr>.
+    Found 1-bit register for signal <DRdy>.
+    Found 31-bit register for signal <cptClk>.
+    Found 31-bit register for signal <cptBit>.
+    Found 1-bit register for signal <parite>.
+    Found 1-bit register for signal <parite_calc>.
+    Found 1-bit register for signal <stop>.
+    Found finite state machine <FSM_1> for signal <etatc>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 5                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset (negative)                               |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | idlec                                          |
+    | Power Up State     | idlec                                          |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_2> for signal <etat16>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 5                                              |
+    | Outputs            | 2                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset (negative)                               |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | idle                                           |
+    | Power Up State     | idle                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 31-bit subtractor for signal <GND_10_o_GND_10_o_sub_4_OUT<30:0>> created at line 61.
+    Found 3-bit subtractor for signal <GND_10_o_GND_10_o_sub_15_OUT<2:0>> created at line 86.
+    Found 31-bit subtractor for signal <GND_10_o_GND_10_o_sub_24_OUT<30:0>> created at line 103.
+    Found 31-bit 3-to-1 multiplexer for signal <etat16[1]_X_10_o_wide_mux_6_OUT> created at line 47.
+    Found 1-bit 3-to-1 multiplexer for signal <etat16[1]_X_10_o_Mux_8_o> created at line 47.
+    Found 31-bit comparator greater for signal <n0023> created at line 85
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred  86 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred  22 Multiplexer(s).
+	inferred   2 Finite State Machine(s).
+Unit <RxUnit> synthesized.
+
+Synthesizing Unit <TxUnit>.
+    Related source file is "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/TxUnit/TxUnit.vhd".
+    Found 1-bit register for signal <regE>.
+    Found 1-bit register for signal <internalBufE>.
+    Found 1-bit register for signal <bufE>.
+    Found 1-bit register for signal <txd>.
+    Found 8-bit register for signal <registerT>.
+    Found 8-bit register for signal <bufferT>.
+    Found 3-bit register for signal <etat>.
+    Found 31-bit register for signal <cpt_bit>.
+    Found 1-bit register for signal <parite>.
+    Found finite state machine <FSM_3> for signal <etat>.
+    -----------------------------------------------------------------------
+    | States             | 5                                              |
+    | Transitions        | 12                                             |
+    | Inputs             | 5                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset (negative)                               |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | idle                                           |
+    | Power Up State     | idle                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 31-bit subtractor for signal <GND_12_o_GND_12_o_sub_8_OUT<30:0>> created at line 86.
+    Found 1-bit 8-to-1 multiplexer for signal <GND_12_o_registerT[7]_Mux_8_o> created at line 87.
+    Found 31-bit comparator greater for signal <GND_12_o_cpt_bit[30]_LessThan_7_o> created at line 82
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  52 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred  17 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <TxUnit> synthesized.
+
+Synthesizing Unit <ctrlUnit>.
+    Related source file is "/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_emission/ctrlUnit.vhd".
+    Found 1-bit register for signal <IntT>.
+    Found 1-bit register for signal <IntR>.
+    Found 1-bit register for signal <registreC<3>>.
+    Found 1-bit register for signal <registreC<2>>.
+    Found 1-bit register for signal <registreC<1>>.
+    Found 1-bit register for signal <registreC<0>>.
+    Summary:
+	inferred   6 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <ctrlUnit> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 6
+ 10-bit adder                                          : 1
+ 3-bit subtractor                                      : 1
+ 31-bit adder                                          : 1
+ 31-bit subtractor                                     : 3
+# Registers                                            : 36
+ 1-bit register                                        : 24
+ 10-bit register                                       : 1
+ 2-bit register                                        : 1
+ 31-bit register                                       : 4
+ 8-bit register                                        : 6
+# Comparators                                          : 2
+ 31-bit comparator greater                             : 2
+# Multiplexers                                         : 56
+ 1-bit 2-to-1 multiplexer                              : 40
+ 1-bit 3-to-1 multiplexer                              : 1
+ 1-bit 8-to-1 multiplexer                              : 1
+ 10-bit 2-to-1 multiplexer                             : 1
+ 31-bit 2-to-1 multiplexer                             : 5
+ 31-bit 3-to-1 multiplexer                             : 1
+ 8-bit 2-to-1 multiplexer                              : 7
+# FSMs                                                 : 4
+# Xors                                                 : 3
+ 1-bit xor2                                            : 3
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:2404 -  FFs/Latches <addr<1:1>> (without init value) have a constant value of 0 in block <echoUnit>.
+
+Synthesizing (advanced) Unit <RxUnit>.
+The following registers are absorbed into counter <cptBit>: 1 register on signal <cptBit>.
+Unit <RxUnit> synthesized (advanced).
+
+Synthesizing (advanced) Unit <clkUnit>.
+The following registers are absorbed into counter <cptTX>: 1 register on signal <cptTX>.
+Unit <clkUnit> synthesized (advanced).
+
+Synthesizing (advanced) Unit <diviseurClk>.
+The following registers are absorbed into counter <div.cpt>: 1 register on signal <div.cpt>.
+Unit <diviseurClk> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 4
+ 10-bit adder                                          : 1
+ 3-bit subtractor                                      : 1
+ 31-bit subtractor                                     : 2
+# Counters                                             : 3
+ 10-bit up counter                                     : 1
+ 31-bit down counter                                   : 1
+ 31-bit up counter                                     : 1
+# Registers                                            : 135
+ Flip-Flops                                            : 135
+# Comparators                                          : 2
+ 31-bit comparator greater                             : 2
+# Multiplexers                                         : 54
+ 1-bit 2-to-1 multiplexer                              : 40
+ 1-bit 3-to-1 multiplexer                              : 1
+ 1-bit 8-to-1 multiplexer                              : 1
+ 10-bit 2-to-1 multiplexer                             : 1
+ 31-bit 2-to-1 multiplexer                             : 3
+ 31-bit 3-to-1 multiplexer                             : 1
+ 8-bit 2-to-1 multiplexer                              : 7
+# FSMs                                                 : 4
+# Xors                                                 : 3
+ 1-bit xor2                                            : 3
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <Inst_UARTunit/Inst_TxUnit/FSM_3> on signal <etat[1:3]> with user encoding.
+----------------------
+ State    | Encoding
+----------------------
+ idle     | 000
+ init     | 001
+ sendinit | 010
+ sending  | 011
+ sendend  | 100
+----------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <Inst_UARTunit/Inst_RxUnit/FSM_1> on signal <etatc[1:2]> with user encoding.
+----------------------
+ State    | Encoding
+----------------------
+ idlec    | 00
+ workingc | 01
+ endingc  | 10
+----------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <Inst_UARTunit/Inst_RxUnit/FSM_2> on signal <etat16[1:2]> with gray encoding.
+---------------------
+ State   | Encoding
+---------------------
+ idle    | 00
+ waiting | 01
+ working | 11
+---------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <Inst_echoUnit/FSM_0> on signal <etat[1:3]> with user encoding.
+------------------------------
+ State            | Encoding
+------------------------------
+ test_emission    | 000
+ attente          | 001
+ reception        | 010
+ attente_emission | 011
+ pret_a_emettre   | 100
+ emission         | 101
+------------------------------
+
+Optimizing unit <UART_FPGA_N4> ...
+
+Optimizing unit <UARTunit> ...
+
+Optimizing unit <TxUnit> ...
+
+Optimizing unit <RxUnit> ...
+
+Optimizing unit <ctrlUnit> ...
+
+Optimizing unit <echoUnit> ...
+WARNING:Xst:2677 - Node <Inst_UARTunit/Inst_ctrlUnit/IntT> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_30> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_29> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_28> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_27> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_26> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_25> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_24> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_23> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_22> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_21> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_20> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_19> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_18> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_5> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_6> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_7> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_8> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_9> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_10> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_11> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_12> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_13> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_14> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_15> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_16> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <Inst_UARTunit/Inst_RxUnit/cptClk_17> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_17> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_16> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_15> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_14> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_13> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_12> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_11> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_10> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_9> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_8> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_7> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_6> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_5> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_4> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_11> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_12> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_13> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_14> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_15> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_16> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_17> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_18> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_19> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_20> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_21> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_22> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_23> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_24> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_25> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_26> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_27> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_28> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_29> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_30> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_18> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_19> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_20> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_21> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_22> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_23> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_24> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_25> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_26> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_27> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_28> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_29> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_TxUnit/cpt_bit_30> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_4> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_5> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_6> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_7> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_8> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_9> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <Inst_UARTunit/Inst_clkUnit/cptTX_10> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <Inst_UARTunit/Inst_TxUnit/internalBufE> in Unit <UART_FPGA_N4> is equivalent to the following FF/Latch, which will be removed : <Inst_UARTunit/Inst_TxUnit/bufE> 
+INFO:Xst:3203 - The FF/Latch <Inst_UARTunit/Inst_ctrlUnit/registreC_2> in Unit <UART_FPGA_N4> is the opposite to the following FF/Latch, which will be removed : <Inst_UARTunit/Inst_ctrlUnit/IntR> 
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 0) on block UART_FPGA_N4, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 134
+ Flip-Flops                                            : 134
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : UART_FPGA_N4.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 326
+#      GND                         : 1
+#      INV                         : 10
+#      LUT1                        : 8
+#      LUT2                        : 55
+#      LUT3                        : 11
+#      LUT4                        : 14
+#      LUT5                        : 25
+#      LUT6                        : 79
+#      MUXCY                       : 65
+#      MUXF7                       : 3
+#      VCC                         : 1
+#      XORCY                       : 54
+# FlipFlops/Latches                : 134
+#      FD                          : 2
+#      FDC                         : 35
+#      FDCE                        : 35
+#      FDE                         : 57
+#      FDP                         : 5
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 35
+#      IBUF                        : 2
+#      OBUF                        : 33
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 7a100tcsg324-1 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             134  out of  126800     0%  
+ Number of Slice LUTs:                  202  out of  63400     0%  
+    Number used as Logic:               202  out of  63400     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    210
+   Number with an unused Flip Flop:      76  out of    210    36%  
+   Number with an unused LUT:             8  out of    210     3%  
+   Number of fully used LUT-FF pairs:   126  out of    210    60%  
+   Number of unique control sets:        13
+
+IO Utilization: 
+ Number of IOs:                          56
+ Number of bonded IOBs:                  36  out of    210    17%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+mclk                               | BUFGP                  | 11    |
+Inst_diviseurClk/nclk              | BUFG                   | 123   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -1
+
+   Minimum period: 3.841ns (Maximum Frequency: 260.315MHz)
+   Minimum input arrival time before clock: 1.795ns
+   Maximum output required time after clock: 0.897ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'mclk'
+  Clock period: 3.379ns (frequency: 295.946MHz)
+  Total number of paths / destination ports: 634 / 11
+-------------------------------------------------------------------------
+Delay:               3.379ns (Levels of Logic = 12)
+  Source:            Inst_diviseurClk/div.cpt_3 (FF)
+  Destination:       Inst_diviseurClk/div.cpt_9 (FF)
+  Source Clock:      mclk rising
+  Destination Clock: mclk rising
+
+  Data Path: Inst_diviseurClk/div.cpt_3 to Inst_diviseurClk/div.cpt_9
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.478   0.933  Inst_diviseurClk/div.cpt_3 (Inst_diviseurClk/div.cpt_3)
+     LUT5:I0->O            9   0.124   0.474  Inst_diviseurClk/PWR_6_o_div.cpt[9]_equal_1_o_inv_SW0 (N0)
+     LUT6:I5->O            1   0.124   0.000  Inst_diviseurClk/Mcount_div.cpt_lut<0> (Inst_diviseurClk/Mcount_div.cpt_lut<0>)
+     MUXCY:S->O            1   0.472   0.000  Inst_diviseurClk/Mcount_div.cpt_cy<0> (Inst_diviseurClk/Mcount_div.cpt_cy<0>)
+     MUXCY:CI->O           1   0.029   0.000  Inst_diviseurClk/Mcount_div.cpt_cy<1> (Inst_diviseurClk/Mcount_div.cpt_cy<1>)
+     MUXCY:CI->O           1   0.029   0.000  Inst_diviseurClk/Mcount_div.cpt_cy<2> (Inst_diviseurClk/Mcount_div.cpt_cy<2>)
+     MUXCY:CI->O           1   0.029   0.000  Inst_diviseurClk/Mcount_div.cpt_cy<3> (Inst_diviseurClk/Mcount_div.cpt_cy<3>)
+     MUXCY:CI->O           1   0.029   0.000  Inst_diviseurClk/Mcount_div.cpt_cy<4> (Inst_diviseurClk/Mcount_div.cpt_cy<4>)
+     MUXCY:CI->O           1   0.029   0.000  Inst_diviseurClk/Mcount_div.cpt_cy<5> (Inst_diviseurClk/Mcount_div.cpt_cy<5>)
+     MUXCY:CI->O           1   0.029   0.000  Inst_diviseurClk/Mcount_div.cpt_cy<6> (Inst_diviseurClk/Mcount_div.cpt_cy<6>)
+     MUXCY:CI->O           1   0.029   0.000  Inst_diviseurClk/Mcount_div.cpt_cy<7> (Inst_diviseurClk/Mcount_div.cpt_cy<7>)
+     MUXCY:CI->O           0   0.029   0.000  Inst_diviseurClk/Mcount_div.cpt_cy<8> (Inst_diviseurClk/Mcount_div.cpt_cy<8>)
+     XORCY:CI->O           1   0.510   0.000  Inst_diviseurClk/Mcount_div.cpt_xor<9> (Inst_diviseurClk/Mcount_div.cpt9)
+     FDC:D                     0.030          Inst_diviseurClk/div.cpt_9
+    ----------------------------------------
+    Total                      3.379ns (1.972ns logic, 1.407ns route)
+                                       (58.4% logic, 41.6% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'Inst_diviseurClk/nclk'
+  Clock period: 3.841ns (frequency: 260.315MHz)
+  Total number of paths / destination ports: 4020 / 210
+-------------------------------------------------------------------------
+Delay:               3.841ns (Levels of Logic = 9)
+  Source:            Inst_UARTunit/Inst_RxUnit/cptBit_2 (FF)
+  Destination:       Inst_UARTunit/Inst_RxUnit/data_7 (FF)
+  Source Clock:      Inst_diviseurClk/nclk rising
+  Destination Clock: Inst_diviseurClk/nclk rising
+
+  Data Path: Inst_UARTunit/Inst_RxUnit/cptBit_2 to Inst_UARTunit/Inst_RxUnit/data_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             12   0.478   0.991  Inst_UARTunit/Inst_RxUnit/cptBit_2 (Inst_UARTunit/Inst_RxUnit/cptBit_2)
+     LUT5:I0->O            1   0.124   0.000  Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_lut<0> (Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_lut<0>)
+     MUXCY:S->O            1   0.472   0.000  Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<0> (Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<0>)
+     MUXCY:CI->O           1   0.029   0.000  Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<1> (Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<1>)
+     MUXCY:CI->O           1   0.029   0.000  Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<2> (Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<2>)
+     MUXCY:CI->O           1   0.029   0.000  Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<3> (Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<3>)
+     MUXCY:CI->O           1   0.029   0.000  Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<4> (Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<4>)
+     MUXCY:CI->O           1   0.029   0.000  Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<5> (Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<5>)
+     MUXCY:CI->O          22   0.365   0.557  Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<6> (Inst_UARTunit/Inst_RxUnit/Mcompar_n0023_cy<6>)
+     LUT5:I4->O            8   0.124   0.445  Inst_UARTunit/Inst_RxUnit/Mmux_stop_stop_MUX_121_o11 (Inst_UARTunit/Inst_RxUnit/stop_stop_MUX_121_o)
+     FDCE:CE                   0.139          Inst_UARTunit/Inst_RxUnit/data_0
+    ----------------------------------------
+    Total                      3.841ns (1.848ns logic, 1.993ns route)
+                                       (48.1% logic, 51.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'mclk'
+  Total number of paths / destination ports: 11 / 11
+-------------------------------------------------------------------------
+Offset:              1.058ns (Levels of Logic = 1)
+  Source:            btnC (PAD)
+  Destination:       Inst_diviseurClk/nclk (FF)
+  Destination Clock: mclk rising
+
+  Data Path: btnC to Inst_diviseurClk/nclk
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            84   0.001   0.563  btnC_IBUF (Inst_UARTunit/Inst_RxUnit/reset_inv)
+     FDC:CLR                   0.494          Inst_diviseurClk/nclk
+    ----------------------------------------
+    Total                      1.058ns (0.495ns logic, 0.563ns route)
+                                       (46.8% logic, 53.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'Inst_diviseurClk/nclk'
+  Total number of paths / destination ports: 135 / 132
+-------------------------------------------------------------------------
+Offset:              1.795ns (Levels of Logic = 3)
+  Source:            btnC (PAD)
+  Destination:       Inst_UARTunit/Inst_RxUnit/tmpRxD (FF)
+  Destination Clock: Inst_diviseurClk/nclk rising
+
+  Data Path: btnC to Inst_UARTunit/Inst_RxUnit/tmpRxD
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            84   0.001   0.700  btnC_IBUF (Inst_UARTunit/Inst_RxUnit/reset_inv)
+     LUT2:I0->O            7   0.124   0.816  Inst_UARTunit/Inst_clkUnit/Mmux_enableRX11 (Inst_UARTunit/enableRX)
+     LUT6:I2->O            1   0.124   0.000  Inst_UARTunit/Inst_RxUnit/tmpRxD_rstpot (Inst_UARTunit/Inst_RxUnit/tmpRxD_rstpot)
+     FDP:D                     0.030          Inst_UARTunit/Inst_RxUnit/tmpRxD
+    ----------------------------------------
+    Total                      1.795ns (0.279ns logic, 1.516ns route)
+                                       (15.5% logic, 84.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'Inst_diviseurClk/nclk'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              0.897ns (Levels of Logic = 1)
+  Source:            Inst_UARTunit/Inst_TxUnit/txd (FF)
+  Destination:       txd (PAD)
+  Source Clock:      Inst_diviseurClk/nclk rising
+
+  Data Path: Inst_UARTunit/Inst_TxUnit/txd to txd
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDP:C->Q              4   0.478   0.419  Inst_UARTunit/Inst_TxUnit/txd (Inst_UARTunit/Inst_TxUnit/txd)
+     OBUF:I->O                 0.000          txd_OBUF (txd)
+    ----------------------------------------
+    Total                      0.897ns (0.478ns logic, 0.419ns route)
+                                       (53.3% logic, 46.7% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock Inst_diviseurClk/nclk
+---------------------+---------+---------+---------+---------+
+                     | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock         |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------------+---------+---------+---------+---------+
+Inst_diviseurClk/nclk|    3.841|         |         |         |
+mclk                 |    2.007|         |         |         |
+---------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock mclk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+mclk           |    3.379|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 3.73 secs
+ 
+--> 
+
+
+Total memory usage is 496784 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   89 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
+
