@@ -14,3 +14,8 @@ TEST = testRxUnit
 # duration (to adjust if necessary)
 TIME = 10000ns
 PLOT = output
+
+# for synthesis:
+UNIT = UART_FPGA_N4
+ARCH = synthesis
+UCF  = UART_FPGA_N4_DDR.ucf

@@ -16,84 +16,62 @@ architecture RxUnit_arch of RxUnit is
 	type tcontroleReception is (idlec, workingc, endingc);
 	
 	signal etat16 : tcompteur16 := idle;
-	signal tmpRxD : std_logic;
-	signal tmpClk : std_logic;
-	signal trameEnd : std_logic;
-	
 	signal etatc : tcontroleReception := idlec;
-	signal recep : std_logic;
-	
+	signal tmpRxD : std_logic;
+	signal tmpClk : std_logic;	
+
 begin
 	-- Element compteur 16
-	process(enable, reset)
-		variable cptClk : natural;
-	begin
-		if (reset = '0') then
-			etat16 <= idle;
-			tmpRxD <= '1';
-			tmpClk <= '0';
-			recep <= '0';
-			
-		elsif (rising_edge(enable)) then
-			case etat16 is
-				when idle =>
-					if (rxd = '0') then
-						cptClk := 8;
-						recep <= '1';
-						etat16 <= waiting;
-						tmpClk <= '0';
-					end if;
-					
-				when waiting =>
-					if (cptClk = 0) then 
-						etat16 <= working;
-						tmpRxD <= rxd;
-						tmpClk <= '1';
-					else 
-						cptClk := cptClk - 1;
-					end if;
-					
-					-- fin de la reception de la trame 
-					if (trameEnd = '1') then 
-						etat16 <= idle;
-						recep <= '0';
-					end if;
-					
-				when working =>
-					tmpClk <= '0';
-					cptClk := 16;
-					etat16 <= waiting;
-
-					-- fin de la reception de la trame 
-					if (trameEnd = '1') then 
-						etat16 <= idle;
-						recep <= '0';
-					end if;					
-			end case;
-		end if;
-	end process;
-	
-	-- Element controle reception
 	process(clk, reset)
+		variable cptClk : natural;
 		variable cptBit : natural; 
 		variable parite_calc : std_logic; -- la parité calculée
 		variable parite : std_logic;		 -- bit de parité reçu
 		variable stop : std_logic;			 -- bit de stop reçu
 	begin
 		if (reset = '0') then
+			etat16 <= idle;
+			tmpRxD <= '1';
+			tmpClk <= '0';
 			etatc <= idlec;
-			trameEnd <= '0';
 			Ferr <= '0';
 			OErr <= '0';
 			DRdy <= '0';
-			data <= (others => '0');	
+			data <= (others => '0');
 			
-		elsif (rising_edge(clk)) then
+		elsif  rising_edge(clk) then
+			if (enable = '0') then
+				case etat16 is
+					when idle =>
+						if (rxd = '0') then
+							cptClk := 8;
+							etat16 <= waiting;
+							tmpClk <= '0';
+						end if;
+						
+					when waiting =>
+						if (cptClk = 0) then 
+							etat16 <= working;
+							tmpRxD <= rxd;
+							tmpClk <= '1';
+						else 
+							cptClk := cptClk - 1;
+						end if;
+						
+					when working =>
+						tmpClk <= '0';
+						cptClk := 16;
+						etat16 <= waiting;
+				
+				end case;
+			end if;
+			
 			case etatc is
 				when idlec =>
 					OErr <= '0';
-					if (recep = '1') then
-						cptBit := 11;
+					Ferr <= '0';
+					if (tmpclk = '1') then
+						cptBit := 10;
 						parite := '0';
 						parite_calc := '0';
 						etatc <= workingc;
@@ -101,7 +79,7 @@ begin
 				
 				when workingc =>
 					if (tmpClk = '1') then
-						if ((3 <= cptBit) and (cptBit < 11)) then
+						if (3 <= cptBit) then
 							data(cptBit - 3) <= tmpRxD;
 							parite_calc := parite_calc xor tmpRxD;
 						elsif (cptBit = 2) then 
@@ -127,8 +105,8 @@ begin
 					if (read = '0') then
 						OErr <= '1';
 					end if;
-					trameEnd <= '1';
 					etatc <= idlec;
+					etat16 <= idle;
 					
 			end case;
 		end if;
