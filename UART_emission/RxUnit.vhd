@@ -40,7 +40,7 @@ begin
 			data <= (others => '0');
 			
 		elsif  rising_edge(clk) then
-			if (enable = '0') then
+			if (enable = '1') then
 				case etat16 is
 					when idle =>
 						if (rxd = '0') then
