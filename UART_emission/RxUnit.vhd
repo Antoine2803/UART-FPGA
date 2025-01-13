@@ -43,7 +43,7 @@ begin
 			data_reg <= (others => '0');
 			
 		elsif  rising_edge(clk) then
-			if (enable = '1') then
+			--if (enable = '1') then
 				case etat16 is
 					when idle =>
 						if (rxd = '0') then
@@ -53,7 +53,7 @@ begin
 						end if;
 						
 					when waiting =>
-						if (cptClk = 0) then 
+						if (cptClk = 1) then 
 							etat16 <= working;
 							tmpRxD <= rxd;
 							tmpClk <= '1';
@@ -63,11 +63,11 @@ begin
 						
 					when working =>
 						tmpClk <= '0';
-						cptClk := 16;
+						cptClk := 15;
 						etat16 <= waiting;
 				
 				end case;
-			end if;
+			--end if;
 			
 			case etatc is
 				when idlec =>
@@ -89,9 +89,6 @@ begin
 							parite := tmpRxD;
 						elsif (cptBit = 1) then
 							stop := tmpRxD;
-						end if;
-						
-						if (cptBit = 0) then 
 							if ((parite /= parite_calc) or (stop = '0')) then
 								FErr <= '1';
 							else
@@ -100,9 +97,11 @@ begin
 							end if;
 							etatc <= endingc;
 						end if;
-						cptBit := cptBit - 1;
+					cptBit := cptBit - 1;							
+						
 					end if;
 					
+
 				when endingc =>
 					FErr <= '0';
 					DRdy <= '0';

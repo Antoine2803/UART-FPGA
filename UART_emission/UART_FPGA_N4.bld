@@ -5,8 +5,7 @@ Command Line: /mnt/n7fs/install/xilinx_14.7/ISE/bin/lin64/unwrapped/ngdbuild -uc
 UART_FPGA_N4_DDR.ucf -p xc7a100t-csg324-1 UART_FPGA_N4.ngc UART_FPGA_N4.ngd
 
 Reading NGO file
-"/home/qpu4701/Documents/2A/S7-Architecture_des_ordinateurs/TP/UART-FPGA/UART_em
-ission/UART_FPGA_N4.ngc" ...
+"/home/ary6761/Documents/S7/Archi/UART-FPGA/UART_emission/UART_FPGA_N4.ngc" ...
 Gathering constraint information from source properties...
 Done.
 
@@ -28,7 +27,7 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   0
 
-Total memory usage is 451336 kilobytes
+Total memory usage is 451568 kilobytes
 
 Writing NGD file "UART_FPGA_N4.ngd" ...
 Total REAL time to NGDBUILD completion:  2 sec
