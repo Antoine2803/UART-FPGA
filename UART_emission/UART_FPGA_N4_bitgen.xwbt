@@ -1,7 +1,0 @@
-INFILE=/home/ary6761/Documents/S7/Archi/UART-FPGA/UART_emission/UART_FPGA_N4.ncd
-OUTFILE=/home/ary6761/Documents/S7/Archi/UART-FPGA/UART_emission/UART_FPGA_N4.bit
-FAMILY=Artix7
-PART=xc7a100t-1csg324
-WORKINGDIR=/home/ary6761/Documents/S7/Archi/UART-FPGA/UART_emission
-LICENSE=WebPack
-USER_INFO=210842349_0_0_819
