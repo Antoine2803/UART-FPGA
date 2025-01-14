@@ -80,8 +80,6 @@ begin
 
 	reset <= not btnC;
 
-	-- valeurs des sorties (à modifier)
-
 	-- convention afficheur 7 segments 0 => allumé, 1 => éteint
 	ssg <= (others => '1');
 	-- aucun afficheur sélectionné
@@ -91,7 +89,7 @@ begin
 
 	-- Connexion des composants avec les ports de la carte.
 	Inst_diviseurClk: diviseurClk 
-	GENERIC MAP(facteur => 645) -- car 100MHz / 155kHz ~= 646
+	GENERIC MAP(facteur => 645) -- car 100MHz / 155kHz ~= 645
 	PORT MAP(
 		clk => mclk,
 		reset => reset,
@@ -126,5 +124,4 @@ begin
 		data_out => bus1
 	);
 
-    
 end synthesis;

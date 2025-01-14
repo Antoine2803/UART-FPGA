@@ -5,10 +5,10 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY testRXUnit IS
-END testRXUnit;
+ENTITY testRXUnit3 IS
+END testRXUnit3;
  
-ARCHITECTURE behavior OF testRXUnit IS 
+ARCHITECTURE behavior OF testRXUnit3 IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
@@ -71,7 +71,7 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin	
-		-- Simulation de transmission correcte
+		-- Simulation de transmission incorrecte : mauvais bit de stop
       reset <= '0';
       wait for 100 ns;	
 			reset <= '1';
@@ -98,12 +98,12 @@ BEGIN
       wait for clk_period*16;
 			rxd <= '0';					-- bit de parité
       wait for clk_period*16;
-			rxd <= '1';					-- bit de stop
+			rxd <= '0';					-- bit de stop
 		wait for 264 ns;
 			read <= '1';				-- lecture de la donnée par le processeur
 		wait for clk_period*2;
 			read <= '0';
-
+			
       wait;
    end process;
 
